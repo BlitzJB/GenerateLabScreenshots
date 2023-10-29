@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     }));
 
     document.getElementById('include-topbar').addEventListener('change', function () {
-        document.querySelector('.screenshot__container img').classList.toggle('hidden');
+        if (this.checked) {
+            document.querySelector('.screenshot__container img').classList.remove('hidden');
+        } else {
+            document.querySelector('.screenshot__container img').classList.add('hidden');
+        }
         renderImage();
     });
 
