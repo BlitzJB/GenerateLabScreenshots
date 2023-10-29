@@ -30,3 +30,7 @@
     /* Very subtle layer blur to give it a raster effect */
     filter: blur(0.25px);
 }
+
+.hidden {
+    display: none;
+}

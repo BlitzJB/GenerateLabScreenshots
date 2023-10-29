@@ -19,8 +19,11 @@
         <textarea style="margin-bottom: 1rem;" placeholder="your output here" name="" id="outputarea" cols="30" rows="10"></textarea>
         <input style="margin-bottom: 1rem;" placeholder="your class here" id="class" type="text">
         <input style="margin-bottom: .5rem;" placeholder="your folder name here" id="directory" type="text">
+        <div style="display: flex; margin-top: 1rem; margin-bottom: 1rem;">
+            <input style="cursor: pointer" type="checkbox" id="include-topbar">
+            <label for="include-topbar">Include Top Bar</label>
+        </div>
         <button style="padding: 15px 0; cursor: pointer; margin-bottom: 2rem;" id="copy-to-clipboard">Copy Image</button>
-        
     </div>
     <p>Preview:</p>
     <div id="output" class="screenshot__container">

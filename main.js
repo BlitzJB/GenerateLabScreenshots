@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
         renderImage();
     }));
 
+    document.getElementById('include-topbar').addEventListener('change', function(e) {
+        document.querySelector('.screenshot__container > img').classList.toggle('hidden');
+        renderImage();
+    });
+
     document.getElementById('copy-to-clipboard').addEventListener('click', function() {
         /* Copy as pastable image onto clipboard */
         if (dataUrl) {
