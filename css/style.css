@@ -34,3 +34,38 @@
 .hidden {
     display: none;
 }
+
+/* General Layout Styles */
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea {
+    margin-bottom: 1rem;
+}
+
+.input {
+    margin-bottom: 1rem;
+}
+
+.checkbox-container {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox {
+    cursor: pointer;
+}
+
+.button {
+    padding: 15px 0;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.hidden {
+    display: none;
+}

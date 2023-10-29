@@ -11,20 +11,19 @@
     <meta property="og:url" content="https://generate-lab-screenshots.vercel.app/" />
     <link rel="icon" href="./images/terminal.webp" type="image/gif" sizes="16x16">
 
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
-    <div style="display: flex; flex-direction: column;">
+    <div class="container">
         <h1>Generate Terminal Screenshots</h1>
-        <textarea style="margin-bottom: 1rem;" placeholder="your output here" name="" id="outputarea" cols="30" rows="10"></textarea>
-        <input style="margin-bottom: 1rem;" placeholder="your class here" id="class" type="text">
-        <input style="margin-bottom: .5rem;" placeholder="your folder name here" id="directory" type="text">
-        <div style="display: flex; margin-top: 1rem; margin-bottom: 1rem;">
-            <input style="cursor: pointer" type="checkbox" id="include-topbar">
+        <textarea class="textarea" placeholder="your output here" name="" id="outputarea" cols="30" rows="10"></textarea>
+        <input class="input" placeholder="your class here" id="class" type="text">
+        <input class="input" placeholder="your folder name here" id="directory" type="text">
+        <div class="checkbox-container">
+            <input class="checkbox" type="checkbox" id="include-topbar">
             <label for="include-topbar">Include Top Bar</label>
         </div>
-        <button style="padding: 15px 0; cursor: pointer; margin-bottom: 2rem;" id="copy-to-clipboard">Copy Image</button>
+        <button class="button" id="copy-to-clipboard">Copy Image</button>
     </div>
     <p>Preview:</p>
     <div id="output" class="screenshot__container">
