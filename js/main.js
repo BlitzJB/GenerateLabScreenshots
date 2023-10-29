@@ -1,22 +1,17 @@
-/* html-to-image.js is already imported in the html filew */
-
 let dataUrl = null;
+let debounceTimeout = null;
 
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    [document.getElementById('outputarea'), document.getElementById('class'), document.getElementById('directory')].forEach(e => e.addEventListener('input', function(e) {
-        refreshImage()
-        renderImage();
+document.addEventListener('DOMContentLoaded', function () {
+    [document.getElementById('outputarea'), document.getElementById('class'), document.getElementById('directory')].forEach(e => e.addEventListener('input', function () {
+        debounceRenderImage();
     }));
 
-    document.getElementById('include-topbar').addEventListener('change', function(e) {
+    document.getElementById('include-topbar').addEventListener('change', function () {
         document.querySelector('.screenshot__container > img').classList.toggle('hidden');
         renderImage();
     });
 
-    document.getElementById('copy-to-clipboard').addEventListener('click', function() {
-        /* Copy as pastable image onto clipboard */
+    document.getElementById('copy-to-clipboard').addEventListener('click', function () {
         if (dataUrl) {
             copyImageToClipboard(dataUrl);
         } else {
@@ -24,8 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
+    refreshImage();
+    renderImage();
 });
+
+function debounceRenderImage() {
+    clearTimeout(debounceTimeout);
+    document.querySelector('.screenshot__content').innerHTML = 'Loading...';
+    debounceTimeout = setTimeout(function () {
+        refreshImage();
+    }, 500);
+}
 
 function dataURLtoBlob(dataURL) {
     const parts = dataURL.split(';base64,');
@@ -51,15 +55,13 @@ function dataURLtoBlob(dataURL) {
 function copyImageToClipboard(imageDataUrl) {
     const blob = dataURLtoBlob(imageDataUrl);
 
-    // Create a new ClipboardItem with the image data
     const clipboardItem = new ClipboardItem({ 'image/png': blob });
 
-    // Copy the ClipboardItem to the clipboard
     navigator.clipboard.write([clipboardItem])
-        .then(function() {
+        .then(function () {
             alert('Image copied to clipboard successfully.');
         })
-        .catch(function(err) {
+        .catch(function (err) {
             alert('Error copying image to clipboard:', err);
         });
 }
@@ -75,7 +77,7 @@ function renderImage() {
         .then((generation) => {
             dataUrl = generation;
         })
-};
+}
 
 function buildContent(content, class_, directory) {
     return `$ ./a.out
