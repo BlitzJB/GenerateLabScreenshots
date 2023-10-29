@@ -81,7 +81,7 @@ function renderImage() {
 
 function buildContent(content, class_, directory) {
     return `$ ./a.out
-${content}
+${content.replaceAll(" ", " ")}
 $ pwd
 /home/${class_}/Desktop/${directory}`
 }
