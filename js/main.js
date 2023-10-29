@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }));
 
     document.getElementById('include-topbar').addEventListener('change', function () {
-        document.querySelector('.screenshot__container > img').classList.toggle('hidden');
+        document.querySelector('.screenshot__container img').classList.toggle('hidden');
         renderImage();
     });
 

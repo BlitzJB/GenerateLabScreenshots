@@ -1,9 +1,10 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
-* {
-    font-family: 'Ubuntu Mono';
-}
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap');
+
+
 .ss__output {
+    font-family: 'Inconsolata', monospace;;
+
     margin: 0;
     margin-top: -3.5px;
     padding-left: 2px;
@@ -16,7 +17,7 @@
     overflow-wrap: break-word;
 
     /* Source: https://askubuntu.com/questions/941734/whats-the-rgb-values-for-ubuntus-default-terminal-unity */
-    background-color: #300A24;
+    background-color: #343434;
     color: white;
     font-size: 17px;
     line-height: 19px;
@@ -24,10 +25,13 @@
     /* Very subtle layer blur to give it a raster effect */
     filter: blur(0.25px);
 }
+.message {
+    font-weight: 400;
+    font-size: 14px;
+    color: #ABABAB;
+}
 </style>
-<img class="hidden" src="./images/topbar.png" alt="">
-<div class="ss__output">$ {{ command }}
-{{ content }}
-$ pwd
-/home/{{ class }}/Desktop/{{ directory }}
+<img class="hidden" src="../images/eclipsetoolbar.png" alt="">
+<div class="ss__output"><span class="message">&lt;terminated&gt; Main [Java Application] /Library/Java/JavaVirtualMachines/termurin-17.jdk/Contents/Home/bin/ja</span>{{ content }}
 </div>
+

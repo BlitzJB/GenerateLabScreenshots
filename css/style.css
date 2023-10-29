@@ -35,6 +35,10 @@
     display: none;
 }
 
+.screenshot__container img {
+    width: 751px;
+}
+
 /* General Layout Styles */
 
 .container {
