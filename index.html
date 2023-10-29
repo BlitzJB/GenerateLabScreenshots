@@ -17,8 +17,14 @@
     <div class="container">
         <h1>Generate Terminal Screenshots</h1>
         <textarea class="textarea" placeholder="your output here" name="" id="outputarea" cols="30" rows="10"></textarea>
-        <input class="input" placeholder="your class here" id="class" type="text">
+        <input class="input" placeholder="your computer user name here" id="user" type="text">
         <input class="input" placeholder="your folder name here" id="directory" type="text">
+        <input class="input" placeholder="your machine name here" id="machine" type="text">
+        <input class="input" placeholder="your command here" id="command" type="text" value="./a.out">
+        <select name="" id="templateName">
+            <option value="template-1">Template 1</option>
+            <option value="template-2">Template 2</option>
+        </select>
         <div class="checkbox-container">
             <input class="checkbox" type="checkbox" id="include-topbar">
             <label for="include-topbar">Include Top Bar</label>
@@ -28,7 +34,7 @@
     <p>Preview:</p>
     <div id="output" class="screenshot__container">
         <img class="hidden" src="./images/topbar.png" alt="">
-        <div class="screenshot__content"></div>
+        <div id="slot"></div>
     </div>
     
     <script src="./lib/html-to-image.js"></script>

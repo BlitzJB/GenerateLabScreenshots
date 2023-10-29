@@ -1,0 +1,46 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+* {
+    font-family: 'Ubuntu Mono';
+}
+.ss__output {
+    margin: 0;
+    margin-top: -3.5px;
+    padding-left: 2px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: calc(100% - 2px);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+
+    /* Source: https://askubuntu.com/questions/941734/whats-the-rgb-values-for-ubuntus-default-terminal-unity */
+    background-color: #300A24;
+    color: white;
+    font-size: 17px;
+    line-height: 19px;
+
+    /* Very subtle layer blur to give it a raster effect */
+    filter: blur(0.25px);
+}
+.pretext1, .pretext2 {
+    font-weight: 600;
+}
+.pretext1 {
+    color: #408A67;
+    width: fit-content;
+}
+.pretext2 {
+    color: #25438b;
+    width: fit-content;
+    margin-right: 5px;
+}
+.ss_cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+</style>
+<div class="ss__output"><div class="ss_cont"><div class="pretext1">{{ class }}@{{ machine }}:</div><div class="pretext2">~/{{ directory }}</div><div class="command">$ {{ command }}</div></div>{{ content }}
+</div>

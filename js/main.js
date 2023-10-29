@@ -1,8 +1,8 @@
 let dataUrl = null;
 let debounceTimeout = null;
 
-document.addEventListener('DOMContentLoaded', function () {
-    [document.getElementById('outputarea'), document.getElementById('class'), document.getElementById('directory')].forEach(e => e.addEventListener('input', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    [document.getElementById('outputarea'), document.getElementById('user'), document.getElementById('directory'), document.getElementById('machine'), document.getElementById('command'), document.getElementById("templateName")].forEach(e => e.addEventListener('input', function () {
         debounceRenderImage();
     }));
 
@@ -19,15 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    refreshImage();
+    await refreshImage();
     renderImage();
 });
 
 function debounceRenderImage() {
     clearTimeout(debounceTimeout);
-    document.querySelector('.screenshot__content').innerHTML = 'Loading...';
-    debounceTimeout = setTimeout(function () {
-        refreshImage();
+    debounceTimeout = setTimeout(async function () {
+        await refreshImage();
     }, 500);
 }
 
@@ -66,8 +65,14 @@ function copyImageToClipboard(imageDataUrl) {
         });
 }
 
-function refreshImage() {
-    document.querySelector('.screenshot__content').innerHTML = buildContent(document.getElementById('outputarea').value, document.getElementById('class').value, document.getElementById('directory').value);
+async function refreshImage() {
+    document.getElementById('slot').innerHTML = await buildContent(document.getElementById("templateName").value, {
+        content: document.getElementById('outputarea').value || "&lt;Your code output would be shown here&gt;",
+        class: document.getElementById('user').value || "&lt;This is the user that you log in as&gt;",
+        directory: document.getElementById('directory').value || "&lt;This is the folder that you are in&gt;",
+        machine: document.getElementById('machine').value || "&lt;This is the name of the machine that you are on&gt;",
+        command: document.getElementById('command').value || "&lt;This is the command that you ran to get this output&gt;",
+    });
     renderImage();
 }
 
@@ -79,9 +84,17 @@ function renderImage() {
         })
 }
 
-function buildContent(content, class_, directory) {
-    return `$ ./a.out
-${content.replaceAll(" ", " ")}
-$ pwd
-/home/${class_}/Desktop/${directory}`
+async function buildContent(templateName, values) {
+    let template = await getTemplate(templateName);
+    Object.keys(values).forEach(key => {
+        template = template.replaceAll(`{{${key}}}`, values[key].replaceAll(" ", " ")).replaceAll(`{{ ${key} }}`, values[key].replaceAll(" ", " "));
+    });
+    return template;
+}
+
+
+async function getTemplate(templateName) {
+    const response = await fetch(`/templates/${templateName}.html`);
+    const text = await response.text();
+    return text;
 }
