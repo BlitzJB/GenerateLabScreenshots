@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.screenshot__content /* pre tag */ {
+.screenshot__content {
     margin: 0;
     margin-top: -3.5px;
     padding-left: 2px;
