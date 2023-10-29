@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Terminal Screenshots</title>
+
+    <meta property="og:title" content="Generate Terminal Screenshots" />
+    <meta property="og:description" content="If you forgot to get all the screenshots form the lab like me" />
+    <meta property="og:image" content="./images/terminal.webp" />
+    <meta property="og:url" content="https://generate-lab-screenshots.vercel.app/" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div style="display: flex; flex-direction: column;">
+        <h1>Generate Terminal Screenshots</h1>
+        <textarea style="margin-bottom: 1rem;" placeholder="your output here" name="" id="outputarea" cols="30" rows="10"></textarea>
+        <input style="margin-bottom: 1rem;" placeholder="your class here" id="class" type="text">
+        <input style="margin-bottom: .5rem;" placeholder="your folder name here" id="directory" type="text">
+        <button style="padding: 15px 0; cursor: pointer; margin-bottom: 2rem;" id="copy-to-clipboard">Copy Image</button>
+        
+    </div>
+    <p>Preview:</p>
+    <div id="output" class="screenshot__container">
+        <img src="./images/topbar.png" alt="">
+        <div class="screenshot__content"></div>
+    </div>
+    
+    <script src="./lib/html-to-image.js"></script>
+    <script src="/main.js"></script>
+    <div style="margin-top: 2rem;">Made with &lt;3 by <a href="https://github.com/BlitzJB">Blitz</a></div>
+</body>
+</html>

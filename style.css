@@ -1,0 +1,32 @@
+/* Source: https://stackoverflow.com/questions/16683361/what-font-is-this-ubuntu-terminal-font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+* {
+    font-family: 'Ubuntu Mono';
+}
+
+.screenshot__container {
+    width: 751px;
+    position: relative;
+}
+
+.screenshot__content /* pre tag */ {
+    margin: 0;
+    margin-top: -3.5px;
+    padding-left: 2px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: calc(100% - 2px);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+
+    /* Source: https://askubuntu.com/questions/941734/whats-the-rgb-values-for-ubuntus-default-terminal-unity */
+    background-color: #300A24;
+    color: white;
+    font-size: 17px;
+    line-height: 19px;
+
+    /* Very subtle layer blur to give it a raster effect */
+    filter: blur(0.25px);
+}
